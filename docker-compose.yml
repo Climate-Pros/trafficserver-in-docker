@@ -4,13 +4,13 @@ services:
         build:
             context: .
             args: 
-                ats_version: 8.1.1
+                ats_version: latest
         image: trafficserver
         container_name: trafficserver
         restart: unless-stopped
         ports:
-            - "80:80"
-            - "443:443"
+            - "12080:80"
+            - "12443:443"
         environment:
             - STORAGE=/cache1:-10G /cache2:-10G
-            - REMAP=orange1.org:-192.168.122.120 orange2.org:-192.168.122.172
+            - REMAP=ts.local:-127.0.0.1
